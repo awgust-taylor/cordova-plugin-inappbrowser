@@ -1191,12 +1191,7 @@ public class InAppBrowser extends CordovaPlugin {
         @SuppressWarnings("deprecation")
         @Override
         public boolean shouldOverrideUrlLoading(WebView webView, String url) {
-              if( url.startsWith("idrivethruapp:") {
-                                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                                 intent.setData(Uri.parse(url));
-                                 cordova.getActivity().startActivity(intent);
-                                 return true;
-                             }
+    
             return shouldOverrideUrlLoading(url, null);
         }
 
@@ -1272,7 +1267,7 @@ public class InAppBrowser extends CordovaPlugin {
                 } catch (android.content.ActivityNotFoundException e) {
                     LOG.e(LOG_TAG, "Error dialing " + url + ": " + e.toString());
                 }
-            } else if (url.startsWith("geo:") || url.startsWith(WebView.SCHEME_MAILTO) || url.startsWith("market:") || url.startsWith("intent:")) {
+            } else if (url.startsWith("geo:") || url.startsWith(WebView.SCHEME_MAILTO) || url.startsWith("market:") || url.startsWith("intent:") || url.startsWith("idrivethruapp:")) {
                 try {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse(url));
