@@ -191,6 +191,13 @@ public class InAppBrowser extends CordovaPlugin {
                         if (url.startsWith("javascript:")) {
                             shouldAllowNavigation = true;
                         }
+                        if( url.startsWith("idrivethruapp:") {
+                                 Intent intent = new Intent(Intent.ACTION_VIEW);
+                                 intent.setData(Uri.parse(url));
+                                 cordova.getActivity().startActivity(intent);
+                               shouldAllowNavigation = true;
+                                 return true;
+                             }
                         if (shouldAllowNavigation == null) {
                             try {
                                 Method iuw = Config.class.getMethod("isUrlWhiteListed", String.class);
