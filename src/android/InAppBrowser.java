@@ -1191,6 +1191,12 @@ public class InAppBrowser extends CordovaPlugin {
         @SuppressWarnings("deprecation")
         @Override
         public boolean shouldOverrideUrlLoading(WebView webView, String url) {
+              if( url.startsWith("idrivethruapp:") {
+                                 Intent intent = new Intent(Intent.ACTION_VIEW);
+                                 intent.setData(Uri.parse(url));
+                                 cordova.getActivity().startActivity(intent);
+                                 return true;
+                             }
             return shouldOverrideUrlLoading(url, null);
         }
 
